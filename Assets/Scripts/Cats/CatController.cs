@@ -20,12 +20,12 @@ public class CatController : MonoBehaviour
     {
         transform.position = Config.SpawnPosition;
 
-        SwitchState(CatState.HideSocks);
+        //SwitchState(CatState.HideSocks);
     }
 
     private void Update()
     {
-        _state.Update();
+        //_state.Update();
     }
 
     private void SwitchState(CatState stateIdentifier)
