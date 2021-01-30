@@ -66,7 +66,8 @@ public class PlayerControls : MonoBehaviour
 
     private void Interact()
     {
-       // Debug.Log("Interacting");
+        GetComponent<InteractingActor>()?.TryToGrab();
+        Debug.Log("Interacting");
     }
 
     private void Throw()
