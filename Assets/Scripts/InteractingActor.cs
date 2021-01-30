@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class InteractingActor : MonoBehaviour
 {
+    [SerializeField] private Transform LeftHandTransform;
+    [SerializeField] private Transform RightHandTransform;
     [SerializeField] private InteractableObject leftHandObject;
-    [SerializeField] private Vector3 leftHandOffset;
 
     private readonly List<Collider> _colliders = new List<Collider>();
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         _colliders.Add(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit");
-        //_colliders.Remove(other);
+        _colliders.Remove(other);
     }
 
     public void TryToGrab()
     {
-        Debug.Log("TryToGrab");
-
         if (leftHandObject != null)
         {
             return;
@@ -38,12 +35,8 @@ public class InteractingActor : MonoBehaviour
                 continue;
             }
 
-            Debug.Log("InteractableObject");
-
-
             if (interactable.CanBeGrabbed())
             {
-                Debug.Log("CanBeGrabbed");
                 leftHandObject = interactable;
             } else if (interactable.CanBeStored())
             {
@@ -56,13 +49,13 @@ public class InteractingActor : MonoBehaviour
         }
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (leftHandObject == null)
         {
             return;
         }
 
-        leftHandObject.transform.position = transform.position + leftHandOffset;
+        leftHandObject.transform.position = LeftHandTransform.position;
     }
 }
