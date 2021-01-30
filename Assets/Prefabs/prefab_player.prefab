@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684562cc27cf744fab0c92b33dcf9b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftHandObject: {fileID: 0}
+  LeftHandOffset: {x: 0.94, y: 0.46, z: -0.62}
 --- !u!1 &7088957075813404573
 GameObject:
   m_ObjectHideFlags: 0

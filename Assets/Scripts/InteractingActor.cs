@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractingActor : MonoBehaviour
 {
-    public InteractableObject LeftHandObject;
-    public Vector3 LeftHandOffset;
+    [SerializeField] private InteractableObject leftHandObject;
+    [SerializeField] private Vector3 leftHandOffset;
 
     private readonly List<Collider> _colliders = new List<Collider>();
 
@@ -17,12 +18,14 @@ public class InteractingActor : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("OnTriggerExit");
-        _colliders.Remove(other);
+        //_colliders.Remove(other);
     }
 
     public void TryToGrab()
     {
-        if (LeftHandObject != null)
+        Debug.Log("TryToGrab");
+
+        if (leftHandObject != null)
         {
             return;
         }
@@ -35,23 +38,31 @@ public class InteractingActor : MonoBehaviour
                 continue;
             }
 
+            Debug.Log("InteractableObject");
+
+
             if (interactable.CanBeGrabbed())
             {
-                LeftHandObject = interactable;
+                Debug.Log("CanBeGrabbed");
+                leftHandObject = interactable;
             } else if (interactable.CanBeStored())
             {
                 Debug.Log("Stored item: " + interactable);
+            }
+            else
+            {
+                throw new InvalidOperationException("Should never happen");
             }
         }
     }
 
     public void FixedUpdate()
     {
-        if (LeftHandObject == null)
+        if (leftHandObject == null)
         {
             return;
         }
 
-        LeftHandObject.transform.position = transform.position + LeftHandOffset;
+        leftHandObject.transform.position = transform.position + leftHandOffset;
     }
 }
