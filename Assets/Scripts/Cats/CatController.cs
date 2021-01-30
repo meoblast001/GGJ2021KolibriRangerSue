@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
+    private const float MaxSample = 5f;
+
     private CatState _stateIdentifier;
     private ICatState _state;
     private NavMeshAgent _navMeshAgent;
@@ -18,7 +20,7 @@ public class CatController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = Config.SpawnPosition;
+        NavMeshAgent.WarpApproximate(Config.SpawnPosition, MaxSample);
 
         SwitchState(CatState.HideSocks);
     }

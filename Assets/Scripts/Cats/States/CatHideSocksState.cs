@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CatHideSocksState : ICatState
 {
+    private const float MaxSampleDistance = 5f;
+
     private readonly CatController _catController;
     private readonly System.Random _random = new System.Random();
 
@@ -13,7 +15,7 @@ public class CatHideSocksState : ICatState
     public void Start()
     {
         var target = GetRandomTarget();
-        _catController.NavMeshAgent.SetDestination(target);
+        _catController.NavMeshAgent.SetApproximateDestination(target, MaxSampleDistance);
     }
 
     public void End()
@@ -25,8 +27,9 @@ public class CatHideSocksState : ICatState
     {
         if (_catController.NavMeshAgent.HasReachedDestination())
         {
+            _catController.NavMeshAgent.ResetPath();
             var target = GetRandomTarget();
-            _catController.NavMeshAgent.SetDestination(target);
+            _catController.NavMeshAgent.SetApproximateDestination(target, MaxSampleDistance);
         }
     }
 
