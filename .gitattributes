@@ -2,6 +2,8 @@
 *.csproj eol=crlf
 *.asset eol=lf
 *.cs eol=lf
+*.json eol=lf
+*.unity eol=lf
 
 # 3D models
 *.3dm filter=lfs diff=lfs merge=lfs -text
