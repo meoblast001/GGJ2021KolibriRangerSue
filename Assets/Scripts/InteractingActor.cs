@@ -9,6 +9,8 @@ public class InteractingActor : MonoBehaviour
     [SerializeField] private Transform RightHandTransform;
     [SerializeField] private InteractableObject leftHandObject;
     [SerializeField] private CollisionDetector[] collisionDetectors;
+    [SerializeField] private float throwVerticalComponent = 1.0f;
+    [SerializeField] private float throwForce = 5.0f;
 
     private readonly List<Collider> _colliders = new List<Collider>();
 
@@ -70,25 +72,21 @@ public class InteractingActor : MonoBehaviour
         leftHandObject = null;
         _colliders.Remove(objectToThrow.GetComponent<Collider>());
 
-        var objectPos = objectToThrow.transform.position;
-
         Vector3 speed;
-        Vector3 newObjectPos;
 
         if (IsCollidingWithWalls)
         {
             var actorPos = transform.position;
-            newObjectPos = new Vector3(actorPos.x, objectPos.y, actorPos.z);
+            var objectPos = objectToThrow.transform.position;
+            objectToThrow.transform.position = new Vector3(actorPos.x, objectPos.y, actorPos.z);
             speed = Vector3.zero;
         }
         else
         {
             var forward = LeftHandTransform.forward;
-            newObjectPos = objectPos + forward * -0.2f;
-            speed = new Vector3(forward.x, 1f, forward.z).normalized * 5f;
+            speed = new Vector3(forward.x, throwVerticalComponent, forward.z).normalized * throwForce;
         }
 
-        objectToThrow.transform.position = newObjectPos;
         objectToThrow.StartThrow(speed);
     }
 
