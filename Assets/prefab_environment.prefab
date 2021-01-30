@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 8159790965054072104}
   - component: {fileID: 2235323752340267172}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11759,7 +11759,7 @@ GameObject:
   - component: {fileID: 8714447039988762062}
   - component: {fileID: 8714447039988762063}
   m_Layer: 0
-  m_Name: building
+  m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
