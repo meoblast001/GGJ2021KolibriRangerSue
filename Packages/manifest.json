@@ -42,7 +42,8 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.dbrizov.naughtyattributes": "2.0.8"
+    "com.dbrizov.naughtyattributes": "2.0.8",
+    "com.pixelwizards.navmeshcomponents": "0.1.0"
   },
   "scopedRegistries": [
     {
@@ -51,6 +52,7 @@
       "scopes": [
         "com.dbrizov.naughtyattributes",
         "com.openupm",
+        "com.pixelwizards.navmeshcomponents",
         "zenject"
       ]
     }
