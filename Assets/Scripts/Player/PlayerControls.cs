@@ -67,12 +67,11 @@ public class PlayerControls : MonoBehaviour
     private void Interact()
     {
         GetComponent<InteractingActor>()?.Interact();
-        Debug.Log("Interacting");
     }
 
     private void Throw()
     {
-       // Debug.Log("Throwing");
+       GetComponent<InteractingActor>()?.Throw();
     }
 
     private void PickUp()

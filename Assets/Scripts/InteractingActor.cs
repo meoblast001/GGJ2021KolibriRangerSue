@@ -26,7 +26,11 @@ public class InteractingActor : MonoBehaviour
         {
             TryGrabLeftHandObject();
         }
-        else
+    }
+
+    public void Throw()
+    {
+        if (leftHandObject != null)
         {
             ThrowLeftHandObject();
         }
