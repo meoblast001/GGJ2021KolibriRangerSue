@@ -23,8 +23,11 @@ public class CatHideSocksState : ICatState
 
     public void Update()
     {
-        var target = GetRandomTarget();
-        _catController.NavMeshAgent.SetDestination(target);
+        if (_catController.NavMeshAgent.HasReachedDestination())
+        {
+            var target = GetRandomTarget();
+            _catController.NavMeshAgent.SetDestination(target);
+        }
     }
 
     private Vector3 GetRandomTarget()

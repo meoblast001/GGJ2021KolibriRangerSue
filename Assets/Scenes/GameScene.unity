@@ -122,6 +122,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &106675989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4391277346690583240, guid: 035f9cfc81e7e14cd9303c8a80971e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986257704268267087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d002ce120f7913dbb166ea9a52a9eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &203844948
 Mesh:
   m_ObjectHideFlags: 0
@@ -2105,6 +2117,30 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1415854049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 234563236863141441, guid: 035f9cfc81e7e14cd9303c8a80971e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986257704268267087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d002ce120f7913dbb166ea9a52a9eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1435109149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5513460122174652652, guid: 035f9cfc81e7e14cd9303c8a80971e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986257704268267087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d002ce120f7913dbb166ea9a52a9eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1898695181
 Mesh:
   m_ObjectHideFlags: 0
@@ -2824,6 +2860,21 @@ PrefabInstance:
       propertyPath: _catConfigs.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4878645284980995473, guid: 695355941a38d4226a4e7d88f7293261,
+        type: 3}
+      propertyPath: _catConfigs.Array.data[0]._catTargets
+      value: 
+      objectReference: {fileID: 1435109149}
+    - target: {fileID: 4878645284980995473, guid: 695355941a38d4226a4e7d88f7293261,
+        type: 3}
+      propertyPath: _catConfigs.Array.data[1]._catTargets
+      value: 
+      objectReference: {fileID: 106675989}
+    - target: {fileID: 4878645284980995473, guid: 695355941a38d4226a4e7d88f7293261,
+        type: 3}
+      propertyPath: _catConfigs.Array.data[2]._catTargets
+      value: 
+      objectReference: {fileID: 1415854049}
     - target: {fileID: 4878645284980995473, guid: 695355941a38d4226a4e7d88f7293261,
         type: 3}
       propertyPath: _catConfigs.Array.data[0]._spawnPosition
