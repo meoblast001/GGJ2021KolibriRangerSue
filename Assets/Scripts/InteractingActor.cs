@@ -10,7 +10,7 @@ public class InteractingActor : MonoBehaviour
     [SerializeField] private InteractableObject leftHandObject;
     [SerializeField] private CollisionDetector[] collisionDetectors;
     [SerializeField] private float throwVerticalComponent = 1.0f;
-    [SerializeField] private float throwForce = 5.0f;
+    [SerializeField] private float throwSpeed = 5.0f;
 
     private readonly List<Collider> _colliders = new List<Collider>();
 
@@ -84,7 +84,7 @@ public class InteractingActor : MonoBehaviour
         else
         {
             var forward = LeftHandTransform.forward;
-            speed = new Vector3(forward.x, throwVerticalComponent, forward.z).normalized * throwForce;
+            speed = new Vector3(forward.x, throwVerticalComponent, forward.z).normalized * throwSpeed;
         }
 
         objectToThrow.StartThrow(speed);
