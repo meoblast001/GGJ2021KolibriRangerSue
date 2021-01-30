@@ -30,6 +30,15 @@ public class CatController : MonoBehaviour
         _state.Update();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var washingMachineTrigger = other.GetComponent<WashingMachineTrigger>();
+        if (washingMachineTrigger != null)
+        {
+            
+        }
+    }
+
     private void SwitchState(CatState stateIdentifier)
     {
         if (_state != null)
