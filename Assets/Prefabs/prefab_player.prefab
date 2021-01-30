@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 6378552194952230308}
   - component: {fileID: 151273784880224653}
   - component: {fileID: 6492851600334303188}
+  - component: {fileID: 7138685752930540159}
   m_Layer: 0
   m_Name: prefab_player
   m_TagString: Untagged
@@ -171,6 +172,22 @@ MonoBehaviour:
   LeftHandTransform: {fileID: 10481289}
   RightHandTransform: {fileID: 311954963}
   leftHandObject: {fileID: 0}
+--- !u!208 &7138685752930540159
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335112953557620978}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7088957075813404573
 GameObject:
   m_ObjectHideFlags: 0
