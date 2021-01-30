@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CatSpawnPointVisualizer : MonoBehaviour
+public class CatSpawnPoint : MonoBehaviour
 {
     [SerializeField] private Color _color;
 
