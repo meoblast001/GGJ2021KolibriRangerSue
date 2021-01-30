@@ -20,13 +20,20 @@ public class InteractingActor : MonoBehaviour
         _colliders.Remove(other);
     }
 
-    public void TryToGrab()
+    public void Interact()
     {
-        if (leftHandObject != null)
+        if (leftHandObject == null)
         {
-            return;
+            TryGrabSomething();
         }
+        else
+        {
+            DropSomething();
+        }
+    }
 
+    private void TryGrabSomething()
+    {
         foreach (var collider in _colliders)
         {
             var interactable = collider.GetComponent<InteractableObject>();
@@ -47,6 +54,19 @@ public class InteractingActor : MonoBehaviour
                 throw new InvalidOperationException("Should never happen");
             }
         }
+    }
+
+    private void DropSomething()
+    {
+        var rigidbody = leftHandObject.GetComponent<Rigidbody>();
+        leftHandObject = null;
+
+        if (rigidbody == null)
+        {
+            return;
+        }
+
+        rigidbody.velocity = LeftHandTransform.forward * 3f;
     }
 
     public void Update()
