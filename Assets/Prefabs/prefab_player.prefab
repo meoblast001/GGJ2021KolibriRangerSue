@@ -77,6 +77,8 @@ MonoBehaviour:
   _camera: {fileID: 7088957075813404568}
   _forwardSpeed: 10
   _directionChange: 2
+  _lockVerticalViewTop: 340
+  _lockVerticalViewBottom: 30
 --- !u!54 &151273784880224653
 Rigidbody:
   m_ObjectHideFlags: 0
