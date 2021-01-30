@@ -21,10 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         var xLookDeltaEuler = new Vector3(0f, LookDeltaDirection.x * _directionChange, 0f);
-        transform.Rotate(xLookDeltaEuler);
+        transform.Rotate(xLookDeltaEuler * Time.deltaTime);
 
         var yLookDeltaEuler = new Vector3(-LookDeltaDirection.y * _directionChange, 0f, 0f);
-        _camera.Rotate(yLookDeltaEuler);
+        _camera.Rotate(yLookDeltaEuler * Time.deltaTime);
 
         var eulerAngles = _camera.eulerAngles;
 
