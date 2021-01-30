@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private float _forwardSpeed = 2f;
     [SerializeField] private float _directionChange = 2f;
+    [SerializeField] private float _lockVerticalViewTop = 340;
+    [SerializeField] private float _lockVerticalViewBottom = 30;
 
     private Rigidbody _rigidbody;
 
@@ -23,6 +25,17 @@ public class PlayerMovement : MonoBehaviour
 
         var yLookDeltaEuler = new Vector3(-LookDeltaDirection.y * _directionChange, 0f, 0f);
         _camera.Rotate(yLookDeltaEuler);
+
+        var eulerAngles = _camera.eulerAngles;
+
+        if (eulerAngles.x >= _lockVerticalViewTop || eulerAngles.x <= _lockVerticalViewBottom)
+        {
+            return;
+        }
+
+        var half = (_lockVerticalViewTop - _lockVerticalViewBottom) / 2f;
+        var eulerX = (_camera.eulerAngles.x - half) < 0 ? _lockVerticalViewBottom : _lockVerticalViewTop;
+        _camera.eulerAngles = new Vector3(eulerX, eulerAngles.y, eulerAngles.z);
     }
 
     private void FixedUpdate()

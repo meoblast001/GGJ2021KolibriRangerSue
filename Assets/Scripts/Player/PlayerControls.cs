@@ -51,36 +51,36 @@ public class PlayerControls : MonoBehaviour
 
     private void Interact()
     {
-        Debug.Log("Interacting");
+       // Debug.Log("Interacting");
     }
 
     private void Throw()
     {
-        Debug.Log("Throwing");
+       // Debug.Log("Throwing");
     }
 
     private void PickUp()
     {
-        Debug.Log("Picking up");
+       // Debug.Log("Picking up");
     }
 
     private void Drop()
     {
-        Debug.Log("Dropping");
+       // Debug.Log("Dropping");
     }
 
     private void SwapActive()
     {
-        Debug.Log("Swapping active");
+       // Debug.Log("Swapping active");
     }
 
     private void UseActive()
     {
-        Debug.Log("Use active");
+       // Debug.Log("Use active");
     }
 
     private void DropSocks()
     {
-        Debug.Log("Drop socks");
+       // Debug.Log("Drop socks");
     }
 }
