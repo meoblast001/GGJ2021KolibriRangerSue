@@ -10,13 +10,13 @@ public class PlayerControls : MonoBehaviour
     {
         _input = new PlayerInput();
 
-        _input.PlayerStandard.Move.started += ctx => { Debug.Log($"Started {ctx.ReadValue<Vector2>()}"); Move(ctx.ReadValue<Vector2>()); };
-        _input.PlayerStandard.Move.performed += ctx => { Debug.Log($"Performed {ctx.ReadValue<Vector2>()}"); Move(ctx.ReadValue<Vector2>()); Move(ctx.ReadValue<Vector2>()); };
-        _input.PlayerStandard.Move.canceled += ctx => { Debug.Log($"Canceled {ctx.ReadValue<Vector2>()}"); Move(ctx.ReadValue<Vector2>()); Move(ctx.ReadValue<Vector2>()); };
+        _input.PlayerStandard.Move.started += ctx => Move(ctx.ReadValue<Vector2>());
+        _input.PlayerStandard.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        _input.PlayerStandard.Move.canceled += ctx => Move(ctx.ReadValue<Vector2>());
 
-        _input.PlayerStandard.Look.started += ctx =>{ Debug.Log($"R Started {ctx.ReadValue<Vector2>()}"); Look(ctx.ReadValue<Vector2>()); };
-        _input.PlayerStandard.Look.performed += ctx =>  { Debug.Log($"R Performed {ctx.ReadValue<Vector2>()}"); Look(ctx.ReadValue<Vector2>()); };
-        _input.PlayerStandard.Look.canceled += ctx => { Debug.Log($"R Canceled {ctx.ReadValue<Vector2>()}"); Look(ctx.ReadValue<Vector2>()); };
+        _input.PlayerStandard.Look.started += ctx => Look(ctx.ReadValue<Vector2>());
+        _input.PlayerStandard.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
+        _input.PlayerStandard.Look.canceled += ctx => Look(ctx.ReadValue<Vector2>());
 
         _input.PlayerStandard.Collect.performed += _ => Interact();
         _input.PlayerStandard.Throw.performed += _ => Throw();
