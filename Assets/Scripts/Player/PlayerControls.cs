@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -37,6 +38,20 @@ public class PlayerControls : MonoBehaviour
     {
         _input.Disable();
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+            Keyboard keyboard = InputSystem.GetDevice<Keyboard>();
+            if (keyboard.escapeKey.wasPressedThisFrame)
+            {
+                Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)
+                    ? CursorLockMode.None
+                    : CursorLockMode.Locked;
+            }
+        }
     }
 
     private void Move(Vector2 direction)
