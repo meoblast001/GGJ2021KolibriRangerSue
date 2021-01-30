@@ -27,7 +27,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""17dd8bb9-48a2-4db2-9506-8208cf0d55c0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Collect"",
                     ""type"": ""Button"",
                     ""id"": ""1622dadb-3d25-4616-ad18-0351740902d4"",
                     ""expectedControlType"": ""Button"",
@@ -67,10 +75,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""17dd8bb9-48a2-4db2-9506-8208cf0d55c0"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""UseActive"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff464c30-35ef-4242-8efb-165be2debc24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DropSocks"",
+                    ""type"": ""Button"",
+                    ""id"": ""c3c78b56-2cb0-4170-9019-e54fe81924ec"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -83,7 +99,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Collect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -94,14 +110,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Collect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""569ea0b1-593d-4241-bfc2-6ff09b7d5476"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -112,7 +128,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""154dcfc6-aadb-4701-8a59-8152bea54c82"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
@@ -123,7 +139,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""adb26c5a-4892-4cb0-897c-cdcb73ba2da2"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -254,6 +270,50 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""be7a3b65-f2e2-4b2d-9bd0-446f10a1a4a4"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""UseActive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""686414d4-c975-4487-a188-8640899aa922"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""UseActive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""721a2b93-2f7a-4b17-8113-7a526a676d82"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DropSocks"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0537cdef-d8f0-40db-b9be-0dada6f0f0de"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""DropSocks"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1aee8230-75f5-4482-90d0-d7a30b581def"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
@@ -310,12 +370,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // PlayerStandard
         m_PlayerStandard = asset.FindActionMap("PlayerStandard", throwIfNotFound: true);
         m_PlayerStandard_Move = m_PlayerStandard.FindAction("Move", throwIfNotFound: true);
-        m_PlayerStandard_Interact = m_PlayerStandard.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerStandard_Look = m_PlayerStandard.FindAction("Look", throwIfNotFound: true);
+        m_PlayerStandard_Collect = m_PlayerStandard.FindAction("Collect", throwIfNotFound: true);
         m_PlayerStandard_Throw = m_PlayerStandard.FindAction("Throw", throwIfNotFound: true);
         m_PlayerStandard_PickUp = m_PlayerStandard.FindAction("PickUp", throwIfNotFound: true);
         m_PlayerStandard_Drop = m_PlayerStandard.FindAction("Drop", throwIfNotFound: true);
         m_PlayerStandard_SwapActive = m_PlayerStandard.FindAction("SwapActive", throwIfNotFound: true);
-        m_PlayerStandard_Look = m_PlayerStandard.FindAction("Look", throwIfNotFound: true);
+        m_PlayerStandard_UseActive = m_PlayerStandard.FindAction("UseActive", throwIfNotFound: true);
+        m_PlayerStandard_DropSocks = m_PlayerStandard.FindAction("DropSocks", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -366,23 +428,27 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerStandard;
     private IPlayerStandardActions m_PlayerStandardActionsCallbackInterface;
     private readonly InputAction m_PlayerStandard_Move;
-    private readonly InputAction m_PlayerStandard_Interact;
+    private readonly InputAction m_PlayerStandard_Look;
+    private readonly InputAction m_PlayerStandard_Collect;
     private readonly InputAction m_PlayerStandard_Throw;
     private readonly InputAction m_PlayerStandard_PickUp;
     private readonly InputAction m_PlayerStandard_Drop;
     private readonly InputAction m_PlayerStandard_SwapActive;
-    private readonly InputAction m_PlayerStandard_Look;
+    private readonly InputAction m_PlayerStandard_UseActive;
+    private readonly InputAction m_PlayerStandard_DropSocks;
     public struct PlayerStandardActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerStandardActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerStandard_Move;
-        public InputAction @Interact => m_Wrapper.m_PlayerStandard_Interact;
+        public InputAction @Look => m_Wrapper.m_PlayerStandard_Look;
+        public InputAction @Collect => m_Wrapper.m_PlayerStandard_Collect;
         public InputAction @Throw => m_Wrapper.m_PlayerStandard_Throw;
         public InputAction @PickUp => m_Wrapper.m_PlayerStandard_PickUp;
         public InputAction @Drop => m_Wrapper.m_PlayerStandard_Drop;
         public InputAction @SwapActive => m_Wrapper.m_PlayerStandard_SwapActive;
-        public InputAction @Look => m_Wrapper.m_PlayerStandard_Look;
+        public InputAction @UseActive => m_Wrapper.m_PlayerStandard_UseActive;
+        public InputAction @DropSocks => m_Wrapper.m_PlayerStandard_DropSocks;
         public InputActionMap Get() { return m_Wrapper.m_PlayerStandard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -395,9 +461,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnMove;
-                @Interact.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnInteract;
+                @Look.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
+                @Collect.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnCollect;
+                @Collect.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnCollect;
+                @Collect.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnCollect;
                 @Throw.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnThrow;
                 @Throw.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnThrow;
                 @Throw.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnThrow;
@@ -410,9 +479,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @SwapActive.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnSwapActive;
                 @SwapActive.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnSwapActive;
                 @SwapActive.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnSwapActive;
-                @Look.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnLook;
+                @UseActive.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnUseActive;
+                @UseActive.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnUseActive;
+                @UseActive.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnUseActive;
+                @DropSocks.started -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnDropSocks;
+                @DropSocks.performed -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnDropSocks;
+                @DropSocks.canceled -= m_Wrapper.m_PlayerStandardActionsCallbackInterface.OnDropSocks;
             }
             m_Wrapper.m_PlayerStandardActionsCallbackInterface = instance;
             if (instance != null)
@@ -420,9 +492,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Collect.started += instance.OnCollect;
+                @Collect.performed += instance.OnCollect;
+                @Collect.canceled += instance.OnCollect;
                 @Throw.started += instance.OnThrow;
                 @Throw.performed += instance.OnThrow;
                 @Throw.canceled += instance.OnThrow;
@@ -435,9 +510,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @SwapActive.started += instance.OnSwapActive;
                 @SwapActive.performed += instance.OnSwapActive;
                 @SwapActive.canceled += instance.OnSwapActive;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
+                @UseActive.started += instance.OnUseActive;
+                @UseActive.performed += instance.OnUseActive;
+                @UseActive.canceled += instance.OnUseActive;
+                @DropSocks.started += instance.OnDropSocks;
+                @DropSocks.performed += instance.OnDropSocks;
+                @DropSocks.canceled += instance.OnDropSocks;
             }
         }
     }
@@ -463,11 +541,13 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IPlayerStandardActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
+        void OnCollect(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnSwapActive(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnUseActive(InputAction.CallbackContext context);
+        void OnDropSocks(InputAction.CallbackContext context);
     }
 }
