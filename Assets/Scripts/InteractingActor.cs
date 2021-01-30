@@ -24,15 +24,15 @@ public class InteractingActor : MonoBehaviour
     {
         if (leftHandObject == null)
         {
-            TryGrabSomething();
+            TryGrabLeftHandObject();
         }
         else
         {
-            DropSomething();
+            ThrowLeftHandObject();
         }
     }
 
-    private void TryGrabSomething()
+    private void TryGrabLeftHandObject()
     {
         foreach (var collider in _colliders)
         {
@@ -56,17 +56,13 @@ public class InteractingActor : MonoBehaviour
         }
     }
 
-    private void DropSomething()
+    private void ThrowLeftHandObject()
     {
-        var rigidbody = leftHandObject.GetComponent<Rigidbody>();
+        _colliders.Remove(leftHandObject.GetComponent<Collider>());
+
+        var forward = LeftHandTransform.forward;
+        leftHandObject.StartThrow(new Vector3(forward.x, 1f, forward.z).normalized * 5f);
         leftHandObject = null;
-
-        if (rigidbody == null)
-        {
-            return;
-        }
-
-        rigidbody.velocity = LeftHandTransform.forward * 3f;
     }
 
     public void Update()
