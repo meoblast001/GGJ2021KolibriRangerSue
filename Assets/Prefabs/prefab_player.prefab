@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 7088957075813404568}
+  _forwardSpeed: 10
+  _directionChange: 2
 --- !u!54 &151273784880224653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86,7 +88,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 100
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84

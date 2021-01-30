@@ -11,11 +11,11 @@ public class PlayerControls : MonoBehaviour
         _input = new PlayerInput();
 
         _input.PlayerStandard.Move.started += ctx => Move(ctx.ReadValue<Vector2>());
-        _input.PlayerStandard.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        //_input.PlayerStandard.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
         _input.PlayerStandard.Move.canceled += ctx => Move(ctx.ReadValue<Vector2>());
 
         _input.PlayerStandard.Look.started += ctx => Look(ctx.ReadValue<Vector2>());
-        _input.PlayerStandard.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
+        //_input.PlayerStandard.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
         _input.PlayerStandard.Look.canceled += ctx => Look(ctx.ReadValue<Vector2>());
 
         _input.PlayerStandard.Collect.performed += _ => Interact();
