@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActivateOnAwake : MonoBehaviour
 {
+    public GameObject Inactive;
     void Awake()
     {
-        this.gameObject.active = true;
+        Inactive?.SetActive(true);
     }
 }
