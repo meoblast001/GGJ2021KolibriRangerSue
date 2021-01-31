@@ -4,6 +4,7 @@ public class InteractableObject: MonoBehaviour {
 
     [SerializeField] private bool _canBeGrabbed;
     [SerializeField] private bool _canBeStored;
+    [SerializeField] private Effect[] _effects;
 
     private bool _isBeingThrown;
 
@@ -53,5 +54,10 @@ public class InteractableObject: MonoBehaviour {
         gameObject.layer = 0;
         GetComponent<Collider>().isTrigger = true;
         Destroy(GetComponent<Rigidbody>());
+
+        foreach (var effect in _effects)
+        {
+            effect.OnEffect();
+        }
     }
 }

@@ -31,27 +31,23 @@ public class PlayerControls : MonoBehaviour
     private void OnEnable()
     {
         _input.Enable();
+        if (Application.isEditor)
+        {
+            return;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnDisable()
     {
         _input.Disable();
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    private void Update()
-    {
         if (Application.isEditor)
         {
-            Keyboard keyboard = InputSystem.GetDevice<Keyboard>();
-            if (keyboard.escapeKey.wasPressedThisFrame)
-            {
-                Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked)
-                    ? CursorLockMode.None
-                    : CursorLockMode.Locked;
-            }
+            return;
         }
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Move(Vector2 direction)
