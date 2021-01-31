@@ -138,3 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad34cf3c19db4acd9dad0d4bc4ff08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 4
+  _catnipEffectTicks: 200
+  _catnipCooldownTicks: 0
+  _activeTick: 0
+  _cooldownTick: 0

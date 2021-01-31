@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
+    [SerializeField] private Material _material;
     private const float MaxSample = 5f;
 
     private CatState _stateIdentifier;
@@ -73,6 +74,7 @@ public class CatController : MonoBehaviour
         }
 
         SwitchState(CatState.CatchesCatnip);
+        //_material.color = Color.red;
     }
 
     public void ReleaseCatnip()
@@ -82,6 +84,7 @@ public class CatController : MonoBehaviour
             return;
         }
 
+        //_material.color = Color.white;
         _state.End();
     }
 }
