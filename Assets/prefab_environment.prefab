@@ -12979,7 +12979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7928530054884108404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.54, y: -0.6, z: 3.64}
+  m_LocalPosition: {x: 43.54, y: -0.27, z: 3.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4572506162439889888}
@@ -13287,6 +13287,7 @@ GameObject:
   - component: {fileID: 8714447039988762061}
   - component: {fileID: 8714447039988762062}
   - component: {fileID: 8714447039988762063}
+  - component: {fileID: 2127884260}
   m_Layer: 8
   m_Name: building
   m_TagString: Untagged
@@ -14785,3 +14786,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2127884260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714447039988762048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b439f9cd0b2e74ff387157f2c1f19ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
