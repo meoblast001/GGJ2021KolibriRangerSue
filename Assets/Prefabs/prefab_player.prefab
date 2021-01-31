@@ -228,9 +228,9 @@ MonoBehaviour:
   RightHandTransform: {fileID: 311954963}
   leftHandObject: {fileID: 0}
   collisionDetectors:
-  - {fileID: 288890780626049579}
   - {fileID: 2048828432144435765}
-  - {fileID: 894944164010386091}
+  throwVerticalComponent: 1
+  throwSpeed: 5
 --- !u!208 &7138685752930540159
 NavMeshObstacle:
   m_ObjectHideFlags: 0
