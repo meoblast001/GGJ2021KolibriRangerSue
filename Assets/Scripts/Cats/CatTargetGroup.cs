@@ -12,13 +12,17 @@ public class CatTargetGroup : MonoBehaviour
 
     private void Awake()
     {
-        _targets = GetComponentsInChildren<Transform>().Select(transform => transform.position).ToArray();
+        _targets = GetComponentsInChildren<Transform>()
+            .Where(transform => transform.gameObject != gameObject)
+            .Select(transform => transform.position).ToArray();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = _color;
-        foreach (var transform in GetComponentsInChildren<Transform>())
+        var childTransforms = GetComponentsInChildren<Transform>()
+            .Where(transform => transform.gameObject != gameObject);
+        foreach (var transform in childTransforms)
             Gizmos.DrawWireCube(transform.position, Vector3.one * 0.25f);
     }
 }
