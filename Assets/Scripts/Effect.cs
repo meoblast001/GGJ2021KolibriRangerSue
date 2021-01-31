@@ -5,6 +5,7 @@ public enum EffectKind
 {
     Catnip
 }
+
 public class Effect: MonoBehaviour
 {
     [SerializeField] private EffectKind kind;
