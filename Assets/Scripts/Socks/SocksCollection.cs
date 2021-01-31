@@ -56,6 +56,8 @@ public class SocksCollection : MonoBehaviour
 
             var gameObject = GameObject.Instantiate(_sockObjectPrefab);
             gameObject.transform.position = position;
+            var sockObject = gameObject.GetComponent<SockObjectController>();
+            sockObject.SetConfig(sock.PairConfig);
         }
     }
 }
