@@ -10,7 +10,6 @@
     "com.unity.textmeshpro": "2.1.1",
     "com.unity.timeline": "1.2.17",
     "com.unity.ugui": "1.0.0",
-    "zenject": "8.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -43,7 +42,8 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
     "com.dbrizov.naughtyattributes": "2.0.8",
-    "com.pixelwizards.navmeshcomponents": "0.1.0"
+    "com.pixelwizards.navmeshcomponents": "0.1.0",
+    "com.neuecc.unirx": "7.1.0"
   },
   "scopedRegistries": [
     {
@@ -51,9 +51,9 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.dbrizov.naughtyattributes",
+        "com.neuecc.unirx",
         "com.openupm",
-        "com.pixelwizards.navmeshcomponents",
-        "zenject"
+        "com.pixelwizards.navmeshcomponents"
       ]
     }
   ]

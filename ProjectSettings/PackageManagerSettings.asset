@@ -25,9 +25,9 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.dbrizov.naughtyattributes
+    - com.neuecc.unirx
     - com.openupm
     - com.pixelwizards.navmeshcomponents
-    - zenject
     m_IsDefault: 0
   m_UserSelectedRegistryName: 
   m_UserAddingNewScopedRegistry: 0
@@ -39,16 +39,16 @@ MonoBehaviour:
       m_Url: https://package.openupm.com
       m_Scopes:
       - com.dbrizov.naughtyattributes
+      - com.neuecc.unirx
       - com.openupm
       - com.pixelwizards.navmeshcomponents
-      - zenject
       m_IsDefault: 0
     m_Modified: 0
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.dbrizov.naughtyattributes
+    - com.neuecc.unirx
     - com.openupm
     - com.pixelwizards.navmeshcomponents
-    - zenject
     m_SelectedScopeIndex: 0

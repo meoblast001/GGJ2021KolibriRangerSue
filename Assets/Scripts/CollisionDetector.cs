@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ModestTree;
 using UnityEngine;
 
 public class CollisionDetector : MonoBehaviour
@@ -40,5 +39,5 @@ public class CollisionDetector : MonoBehaviour
         _walls.Remove(wall);
     }
 
-    public bool IsColliding => !_walls.IsEmpty();
+    public bool IsColliding => _walls.Count > 0;
 }

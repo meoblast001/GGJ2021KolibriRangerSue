@@ -37,7 +37,6 @@ public class CatHideSocksState : ICatState
 
     public void OnTriggerEnter(Collider other)
     {
-
     }
 
     private Vector3 GetRandomTarget()

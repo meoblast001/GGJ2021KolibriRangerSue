@@ -23,6 +23,6 @@ public class SocksCollection : MonoBehaviour
 
     public Sock[] DistributePair()
     {
-        return _socks.Where(sock => sock.State == SockState.WashingMachine).Take(2).ToArray();
+        return _socks.Where(sock => sock.State.Value == SockState.WashingMachine).Take(2).ToArray();
     }
 }
