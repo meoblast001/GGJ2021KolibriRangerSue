@@ -69,13 +69,12 @@ public class InteractingActor : MonoBehaviour
     private void ThrowLeftHandObject()
     {
         var objectToThrow = leftHandObject;
-        leftHandObject = null;
-        _colliders.Remove(objectToThrow.GetComponent<Collider>());
 
         Vector3 speed;
 
         if (IsCollidingWithWalls)
         {
+            return;
             var actorPos = transform.position;
             var objectPos = objectToThrow.transform.position;
             objectToThrow.transform.position = new Vector3(actorPos.x, objectPos.y, actorPos.z);
@@ -86,6 +85,9 @@ public class InteractingActor : MonoBehaviour
             var forward = LeftHandTransform.forward;
             speed = new Vector3(forward.x, throwVerticalComponent, forward.z).normalized * throwSpeed;
         }
+
+        leftHandObject = null;
+        _colliders.Clear();
 
         objectToThrow.StartThrow(speed);
     }
