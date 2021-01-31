@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
+    [SerializeField] int _catnipTotalTicks = 300;
+    private int _catnipCurrentTicks;
     private const float MaxSample = 5f;
 
     private CatState _stateIdentifier;
     private ICatState _state;
     private NavMeshAgent _navMeshAgent;
     private CatInventory _inventory;
+    private bool _catchingCatnip;
 
     public CatConfig Config { set; get; }
 
@@ -57,8 +61,43 @@ public class CatController : MonoBehaviour
         _state.Start();
     }
 
-    public void DealWithCatnip()
+    public void CatchCatnip()
     {
-        Debug.Log("DealWithCatnip");
+        if (_catchingCatnip)
+        {
+            return;
+        }
+
+        _catchingCatnip = true;
+        NavMeshAgent.isStopped = true;
+
+        _catnipCurrentTicks = _catnipTotalTicks;
+    }
+
+    public void ReleaseCatnip()
+    {
+        if (!_catchingCatnip)
+        {
+            return;
+        }
+
+        _catchingCatnip = false;
+        NavMeshAgent.isStopped = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_catchingCatnip)
+        {
+            return;
+        }
+
+        if (_catnipCurrentTicks > 0)
+        {
+            _catnipCurrentTicks--;
+            return;
+        }
+
+        ReleaseCatnip();
     }
 }

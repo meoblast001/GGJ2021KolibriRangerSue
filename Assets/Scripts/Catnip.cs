@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Catnip : MonoBehaviour, IEffect
 {
-    [SerializeField] private float _radius = 10f;
+    [SerializeField] private float _radius = 4f;
 
     private List<CatController> _cats = new List<CatController>();
 
@@ -36,7 +36,7 @@ public class Catnip : MonoBehaviour, IEffect
         _cats.Clear();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!_active)
         {
@@ -54,8 +54,6 @@ public class Catnip : MonoBehaviour, IEffect
             return;
         }
 
-        cat.DealWithCatnip();
-
         _cats.Add(cat);
     }
 
@@ -72,6 +70,23 @@ public class Catnip : MonoBehaviour, IEffect
             return;
         }
 
+        cat.ReleaseCatnip();
+
         _cats.Remove(cat);
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_active)
+        {
+            return;
+        }
+
+        foreach (var cat in _cats)
+        {
+            cat.CatchCatnip();
+        }
+
+        _cats.Clear();
     }
 }
