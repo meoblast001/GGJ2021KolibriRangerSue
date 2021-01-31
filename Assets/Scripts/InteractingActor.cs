@@ -14,7 +14,14 @@ public class InteractingActor : MonoBehaviour
 
     private readonly List<Collider> _colliders = new List<Collider>();
 
+    private AudioSource pickupSource;
+    private bool hasPickupPlayedOnce = false;
+
     private bool IsCollidingWithWalls => collisionDetectors.Any(detector => detector.IsColliding);
+
+    void Start() {
+        pickupSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -56,6 +63,11 @@ public class InteractingActor : MonoBehaviour
             {
                 interactable.PickUp();
                 leftHandObject = interactable;
+                if (!hasPickupPlayedOnce) {
+                    pickupSource.Play();
+                    hasPickupPlayedOnce = true;
+                }
+                
             } else if (interactable.CanBeStored())
             {
                 Debug.Log("Stored item: " + interactable);

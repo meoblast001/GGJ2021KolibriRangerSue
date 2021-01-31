@@ -5,6 +5,7 @@ public class InteractableObject: MonoBehaviour {
     [SerializeField] private bool _canBeGrabbed;
     [SerializeField] private bool _canBeStored;
     [SerializeField] private Effect[] _effects;
+    //[SerializeField] private AudioSource[] _sounds;
 
     private bool _isBeingThrown;
     private AudioSource source;
