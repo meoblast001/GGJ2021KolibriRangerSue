@@ -57,7 +57,15 @@ public class InteractableObject: MonoBehaviour {
 
         foreach (var effect in _effects)
         {
-            effect.OnEffect();
+            effect.GetEffect().Activate();
+        }
+    }
+
+    public void PickUp()
+    {
+        foreach (var effect in _effects)
+        {
+            effect.GetEffect().Deactivate();
         }
     }
 }

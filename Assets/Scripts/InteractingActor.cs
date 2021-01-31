@@ -54,6 +54,7 @@ public class InteractingActor : MonoBehaviour
 
             if (interactable.CanBeGrabbed())
             {
+                interactable.PickUp();
                 leftHandObject = interactable;
             } else if (interactable.CanBeStored())
             {

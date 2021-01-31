@@ -55,4 +55,9 @@ public class CatController : MonoBehaviour
 
         _state.Start();
     }
+
+    public void DealWithCatnip()
+    {
+        Debug.Log("DealWithCatnip");
+    }
 }
