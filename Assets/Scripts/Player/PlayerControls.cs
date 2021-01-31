@@ -92,6 +92,6 @@ public class PlayerControls : MonoBehaviour
 
     private void DropSocks()
     {
-       // Debug.Log("Drop socks");
+       GetComponent<PlayerSockInteraction>()?.DropSocks();
     }
 }

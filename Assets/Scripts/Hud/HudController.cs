@@ -6,8 +6,10 @@ using UniRx;
 public class HudController : MonoBehaviour
 {
     [SerializeField] private Text _sockInventoryText;
+    [SerializeField] private Text _socksInLaundryText;
 
-    private IDisposable inventorySubscription;
+    private IDisposable _inventorySubscription;
+    private IDisposable _socksInLaundrySubscription;
 
     private int SockInventory
     {
@@ -17,12 +19,19 @@ public class HudController : MonoBehaviour
     private void Start()
     {
         var sockCollection = SocksCollection.Singleton;
-        inventorySubscription = sockCollection.ObserveCountByState(SockState.WithPlayer)
+        _inventorySubscription = sockCollection.ObserveCountByState(SockState.WithPlayer)
             .Subscribe(count => SockInventory = count);
+        _socksInLaundrySubscription = sockCollection.ObserveCountByState(SockState.WashingMachine)
+            .Subscribe(count => SetSocksInLaundry(count, sockCollection.Socks.Count));
     }
 
     private void OnDestroy()
     {
-        inventorySubscription.Dispose();
+        _inventorySubscription.Dispose();
+    }
+
+    private void SetSocksInLaundry(int current, int max)
+    {
+        _socksInLaundryText.text = $"{current} / {max}";
     }
 }

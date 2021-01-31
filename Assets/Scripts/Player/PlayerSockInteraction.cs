@@ -4,6 +4,7 @@ public class PlayerSockInteraction : MonoBehaviour
 {
     private SockInventory _inventory;
     private SockObjectController _currentSock;
+    private bool _atWashingMachine = false;
 
     private void Awake()
     {
@@ -15,6 +16,9 @@ public class PlayerSockInteraction : MonoBehaviour
         var sockObject = other.GetComponent<SockObjectController>();
         if (sockObject != null)
             _currentSock = sockObject;
+
+        if (other.GetComponent<WashingMachineTrigger>() != null)
+            _atWashingMachine = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -22,6 +26,9 @@ public class PlayerSockInteraction : MonoBehaviour
         var sockObject = other.GetComponent<SockObjectController>();
         if (sockObject != null)
             _currentSock = null;
+
+        if (other.GetComponent<WashingMachineTrigger>() != null)
+            _atWashingMachine = false;
     }
 
     public void PickUpSock()
@@ -43,6 +50,16 @@ public class PlayerSockInteraction : MonoBehaviour
         else
         {
             Debug.Log("No sock to pick up");
+        }
+    }
+
+    public void DropSocks()
+    {
+        if (_atWashingMachine)
+        {
+            var droppedSocks = _inventory.DropAllSocks();
+            foreach (var sock in droppedSocks)
+                sock.State.Value = SockState.WashingMachine;
         }
     }
 }

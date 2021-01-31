@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class SockInventory
 {
     private Sock _leftSock;
@@ -27,5 +29,19 @@ public class SockInventory
             return false;
 
         return true;
+    }
+
+    public IEnumerable<Sock> DropAllSocks()
+    {
+        var socks = new List<Sock>();
+        if (_leftSock != null)
+            socks.Add(_leftSock);
+        if (_rightSock != null)
+            socks.Add(_rightSock);
+
+        _leftSock = null;
+        _rightSock = null;
+
+        return socks;
     }
 }

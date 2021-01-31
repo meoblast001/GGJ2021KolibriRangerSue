@@ -20,6 +20,8 @@ public class SocksCollection : MonoBehaviour
     private List<Sock> _socks;
     private System.Random _random = new System.Random();
 
+    public IReadOnlyList<Sock> Socks => _socks;
+
     private ReadOnlyReactiveProperty<bool> _washingMachineHasSocks;
     public IReadOnlyReactiveProperty<bool> WashingMachineHasSocks => _washingMachineHasSocks;
 
@@ -56,6 +58,14 @@ public class SocksCollection : MonoBehaviour
         return _socks.Select(sock => sock.State)
             .CombineLatest()
             .Select(sockStates => sockStates.Count(sockState => sockState == state))
+            .DistinctUntilChanged();
+    }
+
+    public IObservable<bool> ObserveAllInLaundry()
+    {
+        return _socks.Select(sock => sock.State)
+            .CombineLatest()
+            .Select(sockStates => sockStates.All(sockState => sockState == SockState.WashingMachine))
             .DistinctUntilChanged();
     }
 
