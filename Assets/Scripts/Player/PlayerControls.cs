@@ -72,7 +72,7 @@ public class PlayerControls : MonoBehaviour
 
     private void PickUp()
     {
-       // Debug.Log("Picking up");
+       GetComponent<PlayerSockInteraction>()?.PickUpSock();
     }
 
     private void Drop()
