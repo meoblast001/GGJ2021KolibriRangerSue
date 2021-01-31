@@ -1,5 +1,6 @@
 public enum CatState
 {
     HideSocks,
-    GetLaundrySocks
+    GetLaundrySocks,
+    CatchesCatnip
 }

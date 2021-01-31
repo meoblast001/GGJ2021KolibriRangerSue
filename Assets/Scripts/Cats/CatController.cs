@@ -1,11 +1,10 @@
 using System;
+using Cats.States;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
-    [SerializeField] int _catnipTotalTicks = 300;
-    private int _catnipCurrentTicks;
     private const float MaxSample = 5f;
 
     private CatState _stateIdentifier;
@@ -32,9 +31,9 @@ public class CatController : MonoBehaviour
         SwitchState(CatState.HideSocks);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _state.Update();
+        _state?.Update();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,7 +54,12 @@ public class CatController : MonoBehaviour
             case CatState.GetLaundrySocks:
                 _state = new CatGetLaundrySocksState(this, SwitchState);
                 break;
+            case CatState.CatchesCatnip:
+                _state = new CatCatchesCatnipState(this, SwitchState, _stateIdentifier);
+                break;
         }
+
+        _stateIdentifier = stateIdentifier;
 
         Debug.Log($"Cat is entering state {stateIdentifier}");
         _state.Start();
@@ -63,41 +67,21 @@ public class CatController : MonoBehaviour
 
     public void CatchCatnip()
     {
-        if (_catchingCatnip)
+        if (_stateIdentifier == CatState.CatchesCatnip)
         {
             return;
         }
 
-        _catchingCatnip = true;
-        NavMeshAgent.isStopped = true;
-
-        _catnipCurrentTicks = _catnipTotalTicks;
+        SwitchState(CatState.CatchesCatnip);
     }
 
     public void ReleaseCatnip()
     {
-        if (!_catchingCatnip)
+        if (_stateIdentifier != CatState.CatchesCatnip)
         {
             return;
         }
 
-        _catchingCatnip = false;
-        NavMeshAgent.isStopped = false;
-    }
-
-    private void FixedUpdate()
-    {
-        if (!_catchingCatnip)
-        {
-            return;
-        }
-
-        if (_catnipCurrentTicks > 0)
-        {
-            _catnipCurrentTicks--;
-            return;
-        }
-
-        ReleaseCatnip();
+        _state.End();
     }
 }

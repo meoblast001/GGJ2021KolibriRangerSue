@@ -10,6 +10,14 @@ public class InteractableObject: MonoBehaviour {
 
     public bool CanBeGrabbed()
     {
+        foreach (var effect in _effects)
+        {
+            if (effect.GetEffect().IsCooldown())
+            {
+                return false;
+            }
+        }
+
         return _canBeGrabbed;
     }
 
@@ -65,7 +73,12 @@ public class InteractableObject: MonoBehaviour {
     {
         foreach (var effect in _effects)
         {
-            effect.GetEffect().Deactivate();
+            var instance = effect.GetEffect();
+            if (instance.IsCooldown())
+            {
+                continue;
+            }
+            instance.Deactivate();
         }
     }
 }

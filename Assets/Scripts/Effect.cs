@@ -10,6 +10,8 @@ public interface IEffect
 {
     void Activate();
     void Deactivate();
+    bool IsActive();
+    bool IsCooldown();
 }
 
 public class Effect: MonoBehaviour
