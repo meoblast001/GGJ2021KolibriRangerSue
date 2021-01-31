@@ -53,6 +53,7 @@ public class CatController : MonoBehaviour
                 break;
         }
 
+        Debug.Log($"Cat is entering state {stateIdentifier}");
         _state.Start();
     }
 

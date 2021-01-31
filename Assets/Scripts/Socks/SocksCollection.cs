@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 
 public class SocksCollection : MonoBehaviour
@@ -14,11 +16,24 @@ public class SocksCollection : MonoBehaviour
 
     private List<Sock> _socks;
 
+    private ReadOnlyReactiveProperty<bool> _washingMachineHasSocks;
+    public IReadOnlyReactiveProperty<bool> WashingMachineHasSocks => _washingMachineHasSocks;
+
     private void Start()
     {
         _socks = _config.SockPairsConfig
             .SelectMany(config => new Sock[] {new Sock(config, 0), new Sock(config, 1)})
             .ToList();
+        _washingMachineHasSocks = _socks.Select(sock => sock.State)
+            .CombineLatest()
+            .Select(sockStates => sockStates.Any(state => state == SockState.WashingMachine))
+            .DistinctUntilChanged()
+            .ToReadOnlyReactiveProperty();
+    }
+
+    private void OnDestroy()
+    {
+        _washingMachineHasSocks.Dispose();
     }
 
     public Sock[] DistributePair()
