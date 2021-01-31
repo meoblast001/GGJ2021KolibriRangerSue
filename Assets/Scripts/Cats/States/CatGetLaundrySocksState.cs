@@ -33,7 +33,10 @@ public class CatGetLaundrySocksState : ICatState
             var socksCollection = SocksCollection.Singleton;
             var pair = socksCollection.DistributePair();
             foreach (var sock in pair)
-                _catController.Inventory.AddSock(sock);
+            {
+                if (_catController.Inventory.AddSock(sock))
+                    sock.State.Value = SockState.WithCat;
+            }
             _switchState(CatState.HideSocks);
         }
     }

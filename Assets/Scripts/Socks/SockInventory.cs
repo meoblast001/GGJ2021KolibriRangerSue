@@ -1,4 +1,4 @@
-public class CatInventory
+public class SockInventory
 {
     private Sock _leftSock;
     private Sock _rightSock;
@@ -17,15 +17,15 @@ public class CatInventory
         }
     }
 
-    public void AddSock(Sock sock)
+    public bool AddSock(Sock sock)
     {
         if (_leftSock == null)
             _leftSock = sock;
         else if (_rightSock == null)
             _rightSock = sock;
         else
-            return;
+            return false;
 
-        sock.State.Value = SockState.WithCat;
+        return true;
     }
 }

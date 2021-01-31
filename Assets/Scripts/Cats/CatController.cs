@@ -11,18 +11,18 @@ public class CatController : MonoBehaviour
     private CatState _stateIdentifier;
     private ICatState _state;
     private NavMeshAgent _navMeshAgent;
-    private CatInventory _inventory;
+    private SockInventory _inventory;
     private bool _catchingCatnip;
 
     public CatConfig Config { set; get; }
 
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
-    public CatInventory Inventory => _inventory;
+    public SockInventory Inventory => _inventory;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _inventory = new CatInventory();
+        _inventory = new SockInventory();
     }
 
     private void Start()
