@@ -82,7 +82,7 @@ public class PlayerControls : MonoBehaviour
 
     private void SwapActive()
     {
-       // Debug.Log("Swapping active");
+       Application.Quit();
     }
 
     private void UseActive()
