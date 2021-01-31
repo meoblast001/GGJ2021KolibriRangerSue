@@ -1821,6 +1821,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: e20ba037fa0295661b818a23307dca2e, type: 2}
+  _sockObjectPrefab: {fileID: 7342002544462221392, guid: d07ff3c6da4ba8df3b80f963b4b244e3,
+    type: 3}
+  _catTargetGroups:
+  - {fileID: 1435109149}
+  - {fileID: 106675989}
+  - {fileID: 1415854049}
 --- !u!4 &1187041690
 Transform:
   m_ObjectHideFlags: 0

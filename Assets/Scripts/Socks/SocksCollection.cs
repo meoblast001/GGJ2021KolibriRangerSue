@@ -1,12 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
 
 public class SocksCollection : MonoBehaviour
 {
     [SerializeField] private SocksConfig _config;
+    [SerializeField] private GameObject _sockObjectPrefab;
+    [SerializeField] [ReorderableList] private CatTargetGroup[] _catTargetGroups;
 
     private static SocksCollection _singleton;
     public static SocksCollection Singleton => _singleton;
@@ -15,6 +17,7 @@ public class SocksCollection : MonoBehaviour
     private void OnDisable() => _singleton = null;
 
     private List<Sock> _socks;
+    private System.Random _random = new System.Random();
 
     private ReadOnlyReactiveProperty<bool> _washingMachineHasSocks;
     public IReadOnlyReactiveProperty<bool> WashingMachineHasSocks => _washingMachineHasSocks;
@@ -29,6 +32,8 @@ public class SocksCollection : MonoBehaviour
             .Select(sockStates => sockStates.Any(state => state == SockState.WashingMachine))
             .DistinctUntilChanged()
             .ToReadOnlyReactiveProperty();
+
+        SpawnSocks(_socks);
     }
 
     private void OnDestroy()
@@ -39,5 +44,18 @@ public class SocksCollection : MonoBehaviour
     public Sock[] DistributePair()
     {
         return _socks.Where(sock => sock.State.Value == SockState.WashingMachine).Take(2).ToArray();
+    }
+
+    private void SpawnSocks(IEnumerable<Sock> socks)
+    {
+        var positions = _catTargetGroups.SelectMany(group => group.Targets).ToList();
+        foreach (var sock in socks)
+        {
+            var positionIdx = _random.Next() % positions.Count;
+            var position = positions[positionIdx];
+
+            var gameObject = GameObject.Instantiate(_sockObjectPrefab);
+            gameObject.transform.position = position;
+        }
     }
 }
