@@ -5,8 +5,8 @@ using UnityEngine;
 public class Catnip : MonoBehaviour, IEffect
 {
     [SerializeField] private float _radius = 4f;
-    [SerializeField] int _catnipEffectTicks = 300;
-    [SerializeField] int _catnipCooldownTicks = 1000;
+    [SerializeField] int _catnipEffectTicks = 200;
+    [SerializeField] int _catnipCooldownTicks = 200;
 
     [SerializeField] private int _activeTick;
     [SerializeField] private int _cooldownTick;

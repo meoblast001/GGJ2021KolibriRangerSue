@@ -12,7 +12,7 @@ public class InteractableObject: MonoBehaviour {
     {
         foreach (var effect in _effects)
         {
-            if (effect.GetEffect().IsCooldown())
+            if (effect.GetEffect().IsCooldown() || effect.GetEffect().IsActive())
             {
                 return false;
             }
