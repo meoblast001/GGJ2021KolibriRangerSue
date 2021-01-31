@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 4
-  _catnipEffectTicks: 200
+  _catnipEffectTicks: 1000
   _catnipCooldownTicks: 0
   _activeTick: 0
   _cooldownTick: 0
