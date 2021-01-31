@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
@@ -22,11 +23,15 @@ public class SocksCollection : MonoBehaviour
     private ReadOnlyReactiveProperty<bool> _washingMachineHasSocks;
     public IReadOnlyReactiveProperty<bool> WashingMachineHasSocks => _washingMachineHasSocks;
 
-    private void Start()
+    private void Awake()
     {
         _socks = _config.SockPairsConfig
             .SelectMany(config => new Sock[] {new Sock(config, 0), new Sock(config, 1)})
             .ToList();
+    }
+
+    private void Start()
+    {
         _washingMachineHasSocks = _socks.Select(sock => sock.State)
             .CombineLatest()
             .Select(sockStates => sockStates.Any(state => state == SockState.WashingMachine))
@@ -44,6 +49,14 @@ public class SocksCollection : MonoBehaviour
     public Sock[] DistributePair()
     {
         return _socks.Where(sock => sock.State.Value == SockState.WashingMachine).Take(2).ToArray();
+    }
+
+    public IObservable<int> ObserveCountByState(SockState state)
+    {
+        return _socks.Select(sock => sock.State)
+            .CombineLatest()
+            .Select(sockStates => sockStates.Count(sockState => sockState == state))
+            .DistinctUntilChanged();
     }
 
     private void SpawnSocks(IEnumerable<Sock> socks)
