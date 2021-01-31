@@ -7,6 +7,11 @@ public class InteractableObject: MonoBehaviour {
     [SerializeField] private Effect[] _effects;
 
     private bool _isBeingThrown;
+    private AudioSource source;
+
+    void Start() {
+        source = GetComponent<AudioSource>();
+    }
 
     public bool CanBeGrabbed()
     {
@@ -46,6 +51,9 @@ public class InteractableObject: MonoBehaviour {
         }
 
         _isBeingThrown = true;
+
+
+        source.Play();
 
         gameObject.layer = 9;
         GetComponent<Collider>().isTrigger = false;
