@@ -1,4 +1,5 @@
-enum CatState
+public enum CatState
 {
-    HideSocks
+    HideSocks,
+    GetLaundrySocks
 }

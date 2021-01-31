@@ -16,6 +16,13 @@ public class SocksCollection : MonoBehaviour
 
     private void Start()
     {
-        _socks = _config.SockPairsConfig.Select(config => new Sock(config)).ToList();
+        _socks = _config.SockPairsConfig
+            .SelectMany(config => new Sock[] {new Sock(config, 0), new Sock(config, 1)})
+            .ToList();
+    }
+
+    public Sock[] DistributePair()
+    {
+        return _socks.Where(sock => sock.State == SockState.WashingMachine).Take(2).ToArray();
     }
 }

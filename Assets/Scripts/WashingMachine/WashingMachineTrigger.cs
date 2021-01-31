@@ -1,3 +1,5 @@
-public class WashingMachineTrigger
+using UnityEngine;
+
+public class WashingMachineTrigger : MonoBehaviour
 {
 }

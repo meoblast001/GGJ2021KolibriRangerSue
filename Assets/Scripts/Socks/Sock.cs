@@ -1,14 +1,16 @@
 public class Sock
 {
     private SockPairConfig _pairConfig;
-    private SockState _state;
+    private int _pairMember;
 
     public SockPairConfig PairConfig => _pairConfig;
-    public SockState State => _state;
+    public SockState State { get; set; }
+    public int PairMember => _pairMember;
 
-    public Sock(SockPairConfig pairConfig)
+    public Sock(SockPairConfig pairConfig, int pairMember)
     {
         _pairConfig = pairConfig;
-        _state = SockState.InWorld;
+        _pairMember = pairMember;
+        State = SockState.InWorld;
     }
 }

@@ -8,14 +8,17 @@ public class CatController : MonoBehaviour
     private CatState _stateIdentifier;
     private ICatState _state;
     private NavMeshAgent _navMeshAgent;
+    private CatInventory _inventory;
 
     public CatConfig Config { set; get; }
 
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
+    public CatInventory Inventory => _inventory;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _inventory = new CatInventory();
     }
 
     private void Start()
@@ -32,11 +35,7 @@ public class CatController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var washingMachineTrigger = other.GetComponent<WashingMachineTrigger>();
-        if (washingMachineTrigger != null)
-        {
-            
-        }
+        _state.OnTriggerEnter(other);
     }
 
     private void SwitchState(CatState stateIdentifier)
@@ -47,7 +46,10 @@ public class CatController : MonoBehaviour
         switch (stateIdentifier)
         {
             case CatState.HideSocks:
-                _state = new CatHideSocksState(this);
+                _state = new CatHideSocksState(this, SwitchState);
+                break;
+            case CatState.GetLaundrySocks:
+                _state = new CatGetLaundrySocksState(this, SwitchState);
                 break;
         }
 

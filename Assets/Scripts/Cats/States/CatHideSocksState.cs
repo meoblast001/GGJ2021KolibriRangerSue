@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CatHideSocksState : ICatState
@@ -7,7 +8,7 @@ public class CatHideSocksState : ICatState
     private readonly CatController _catController;
     private readonly System.Random _random = new System.Random();
 
-    public CatHideSocksState(CatController catController)
+    public CatHideSocksState(CatController catController, Action<CatState> switchState)
     {
         _catController = catController;
     }
@@ -31,6 +32,12 @@ public class CatHideSocksState : ICatState
             var target = GetRandomTarget();
             _catController.NavMeshAgent.SetApproximateDestination(target, MaxSampleDistance);
         }
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+
     }
 
     private Vector3 GetRandomTarget()
